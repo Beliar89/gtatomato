@@ -1,0 +1,190 @@
+
+  
+
+ 
+
+
+<div class="estilosapp2">
+ 
+ 
+ <!-- PARCIAL HEADER --> 
+ <%= render "shared/header" %>
+
+
+<div class="container"> 
+ 
+ 
+
+<div class="controladorej2">
+
+
+<div class="row">
+  <div class="box">
+      <div class="alert"><i class="fa fa-th-large fa-1x color-blue"></i>&nbsp;Mostrar Pelicula</div>
+        
+ 
+       <%= form_for(@pelicula) do |f| %>
+
+      
+  <div class="well"> 
+        <div class="field"> 
+                <img src="<%= @pelicula.url%>" style="width: 200px; height: 250px;"/>
+                <label class="col-sm-2">Imagen:</label>
+                 <div class="col-sm-6">
+                <input type="text" class="form-control" value="<%= @pelicula.url %>" size="75">
+              </div>
+        </div> <!-- end field --> 
+
+    </div>
+
+  
+         <div class="field">
+              <label class="control-label">Id:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.id %>">
+           
+        </div> <!-- end field -->
+       
+        <div class="field">
+              <label class="control-label">Name:</label>
+             
+                <input type="text" class="form-control" value="<%= @pelicula.name %>">
+             
+        </div> <!-- end field -->
+       
+          <div class="field">
+           <label class="control-label">Director:</label>
+             
+                <input type="text" class="form-control" value="<%= @pelicula.director %>">
+            
+        </div> <!-- end field -->
+        
+          <div class="field">
+           <label class="control-label">Actor:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.actor %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Email Contact:</label>
+               
+                <input type="text" class="form-control" value="<%= @pelicula.email_contact %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Oscar:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.oscar %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Categoria:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.category %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Stars:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.stars %>">
+             
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Country:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.country %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Year:</label>
+            
+                <input type="text" class="form-control" value="<%= @pelicula.year %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Revenue Amount:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.revenue_amount %>">
+             
+        </div> <!-- end field -->
+       <div class="field">
+           <label class="control-label">Genero:</label> 
+                <input type="text" class="form-control" value="<%= @pelicula.genre %>">
+              
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">Precio:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.precio %>">
+             
+        </div> <!-- end field -->
+        <div class="field">
+           <label class="control-label">URL imagen:</label>
+              
+                <input type="text" class="form-control" value="<%= @pelicula.url %>">
+             
+        </div> <!-- end field -->
+       <% end %>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <br/>
+       <%= link_to 'Back', peliculas_path, class:"btn btn-sm btn-success pull-right", style:"margin-right: 15px; margin-top: 10px;" %>
+     </div>
+      </div> <!-- end field -->
+
+
+
+
+<br>
+
+
+
+<h2>  Comentarios </h2>
+ 
+     <%= render @pelicula.comentarios %>
+ 
+ 
+<div class="panel panel-default panelmod1" style=" box-shadow: 1px 2px 3px gray;"> 
+<span style="font-size: 2em; margin-left:-7px;margin-bottom: 10px;">Añadir comentarios</span>
+</br>
+<%= render "comentarios/form" %>
+  
+<br></br>
+
+
+</div> <!-- end box -->
+
+
+<%= link_to 'Editar Pelicula', edit_pelicula_path(@pelicula), class:"btn btn-sm btn-success" %> 
+<%= link_to 'Back to Peliculas', peliculas_path, class:"btn btn-sm btn-primary" %>
+   
+
+
+
+
+
+ 
+    
+  <div class="margin20">  
+    <br>
+    <%= @pelicula.errors.full_messages.each do |message| %>
+        <div class="be-red white top-space text-center">
+          * <%= message %>
+        </div>
+    <% end %>
+  </div>
+
+</div> <!-- end row -->
+ 
+ 
+<!-- PARCIAL FOOTER --> 
+<%= render "shared/footer" %>
+
+
+</div> <!-- end container -->
+  
+</div> <!-- end controladorej2 -->
+ 
+  
+</div> <!-- end estilosapp2 -->

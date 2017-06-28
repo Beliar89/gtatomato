@@ -1,0 +1,62 @@
+ 
+
+<div class="estilosapp2">
+ 
+ 
+ <!-- PARCIAL HEADER --> 
+ <%= render "shared/header" %>
+
+
+<div class="container"> 
+ 
+ 
+<div class="controladorej2">
+ 
+
+
+         <div class="boxp">
+            <div class="alert bold size18"><i class="fa fa-home fa-1x color-teal"></i>&nbsp;MOVIES OPENING THIS WEEK</div>  
+            <table class="table table-hover table-striped" border="0">
+              
+              <tbody>
+               <% @peliculas.each do |peli| %>
+                  <tr>
+                    <td>
+                      <span class="fa fa-star blue">&nbsp;</span><%= peli.stars %>
+                    </td>
+                    <td><%= peli.id  %> </td>
+                    <td>
+                      <%= peli.name %>
+                    </td>
+                    
+                     <td>
+                      <%= peli.actor %>
+                    </td>
+                    <td>
+                      <%= peli.year %>
+                    </td>
+                      <td align="center">
+              <%= link_to '', pelicula_path(peli), :title => "Visualizar", :class => 'btn btn-sm btn-success fa fa-1x fa-search', style:"color: white;" %>
+              <%= link_to '', edit_pelicula_path(peli), :title => "Editar", :class => 'btn btn-sm btn-primary fa fa-1x fa-edit', style:"color: white;" %>
+              <%= link_to '', { action: :destroy, id: peli.id }, method: :delete, :title => "Eliminar",:class => 'btn btn-sm btn-danger fa fa-1x fa-close', style:"color: white;" %>
+            </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <%= link_to 'Nueva Pelicula', new_pelicula_path, title:"Añade una nueva pelicula !!", class:"btn btn-sm btn-danger" %>
+</div> <!-- end box -->     
+
+ 
+
+
+<!-- PARCIAL FOOTER --> 
+<%= render "shared/footer" %>
+
+
+</div> <!-- end container -->
+  
+</div> <!-- end controladorej2 -->
+ 
+  
+</div> <!-- end estilosapp2 -->

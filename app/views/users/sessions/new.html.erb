@@ -1,0 +1,53 @@
+<style> 
+
+html,body {background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    width: 100%; height: 100% !important;
+}
+
+</style>
+
+<!-- PARCIAL HEADER --> 
+<%= render "shared/header" %>
+
+
+<div class="container">
+
+<!-- LOG IN -->
+
+<div class="border-form-div">
+ 
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+ <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+ <br></br>
+
+  <div class="field tamany">
+     
+    <%= f.email_field :email, placeholder:"Email" %>
+  </div>
+
+  <div class="field tamany">
+    
+    <%= f.password_field :password, placeholder:"Password", autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions guardar">
+    <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block btn-signin" %>
+  </div>
+  
+<% end %>
+
+<%= render "users/shared/links" %>
+<%=link_to "Index", root_path %> 
+
+</div> <!-- end border-form-div -->
+
+</div> <!-- end container -->

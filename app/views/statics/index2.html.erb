@@ -1,0 +1,207 @@
+ 
+
+<div class="estilosapp2">
+ 
+  
+
+
+
+<div class="container" style="margin-top:115px;">
+
+ <div class="row">
+
+<div class="col-lg-6 col-md-6"> 
+    <div class="card" style="width:100%;">
+      <img src="https://resizing.flixster.com/nQpr_LAyqR81PeN8b-mhZFtTUjU=/1100x480/v1.czsxMDI3NzM5ODtqOzE3Mzk4OzEyMDA7NTUwOzI0MA" alt="Avatar" style="width: 100%; height:300px;">
+      <div class="container" style="height: 100px; overflow:hidden;">
+        <h4><b>Pirates of Caribbean</b></h4> 
+        <p>Fans Thrilled By Trippiest Sequences</br> Yet in Episodes 3 </p> 
+      </div>
+    </div> 
+</div>  <!-- col-lg-6 -->
+
+ <div class="col-lg-3 col-md-3">
+
+<div class="card" style="width:100%;">
+      <img src="https://resizing.flixster.com/Ex9j1BNynDvLDQWwSds4ROBTvAk=/540x480/v1.czsxMDI3NzQxMDtqOzE3Mzk4OzEyMDA7Mjc0OzI0MA" alt="Avatar" style="width: 100%; height:300px;">
+      <div class="container" style="height: 100px; overflow:hidden;">
+        <h4><b>Jane Doe</b></h4> 
+        <p>Fans Thrilled By Trippiest Sequences</br> Yet in Episodes 3 </p> 
+      </div>
+    </div> 
+ 
+ 
+
+ </div>  <!-- col-lg-3 -->
+
+ <div class="col-lg-3 col-md-3">
+
+<div class="card" style="width:100%;">
+      <img src="https://resizing.flixster.com/yhyWZmbOY7uzXRC7leDXOdj0FtY=/540x480/v1.czsxMDI3NzQwODtqOzE3Mzk4OzEyMDA7Mjc0OzI0MA" alt="Avatar" style="width: 100%; height:300px;">
+      <div class="container" style="height: 100px; overflow:hidden;">
+        <h4><b>Jane Doe</b></h4> 
+         <p>Fans Thrilled By Trippiest Sequences</br> Yet in Episodes 3 </p>
+      </div>
+    </div> 
+ 
+</div> <!-- col-lg-3 -->
+
+</div>
+
+
+ <div class="row">
+
+ <div class="col-lg-6 col-md-6">
+
+         <div class="box2">
+            <div class="alert bold size18"><i class="fa fa-home fa-1x color-teal"></i>&nbsp;MOVIES OPENING THIS WEEK</div>  
+
+<% if user_signed_in? %>
+
+            <table class="table table-hover table-striped" border="0">
+              
+              <tbody>
+               <% @peliculas.each do |peli| %>
+                  <tr>
+                    <td>
+                      <span class="fa fa-star blue">&nbsp;</span><%= peli.stars %>
+                    </td>
+                    <td><img src="<%= peli.url %>" style="width: 120px; height: 120px;"/> </td> 
+                    <td><%= peli.id  %> </td> 
+                    <td> 
+                     <%= link_to peli.name, pelicula_path(peli), :title => "Visualizar"  %> 
+                    </td>
+                    
+                     <td>
+                      <%= peli.actor %>
+                    </td>
+                    <td>
+                      <%= peli.year %>
+                    </td>
+                    
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+           <%= link_to 'Visualizar todas', peliculas_path, :title => "Visualizar", :class => 'btn btn-xs btn-success pull-right', style:"color: white;" %>
+      <% else %>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Solo pueden visualizar las peliculas los usuarios registrados.</p>
+
+
+<% end %>
+
+ </div> <!-- end box -->  
+
+</div> <!-- end col -->
+
+
+
+  <div class="col-lg-6 col-md-6">
+   <div class="box2">
+            <div class="alert bold size18"><i class="fa fa-film fa-1x color-teal"></i>&nbsp;TOP MOVIES</div>  
+            <table class="table table-hover table-striped">
+              
+              <tbody>
+               <% @peliculas.each do |peli| %>
+                  <tr>
+                    <td>
+                     <span class="fa fa-star red">&nbsp;</span> <%= peli.stars %>
+                    </td>
+                    <td><%= peli.id  %> </td>
+                    <td>
+                      <%= peli.name %>
+                    </td>
+                    
+                     <td>
+                      <%= peli.actor %>
+                    </td>
+                    <td>
+                      <%= peli.year %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+             <%= link_to 'Visualizar todas', peliculas_path, :title => "Visualizar", :class => 'btn btn-xs btn-success pull-right', style:"color: white;" %>
+        </div> <!-- end box -->    
+
+  </div> <!-- end col -->
+
+
+</div> <!-- end row -->
+
+
+
+<!-- SEGUNDO ROW -->
+
+
+ <div class="row">
+
+ <div class="col-lg-7 col-md-7">
+
+         <div class="box2">
+            <div class="alert bold size18"><i class="fa fa-commenting fa-1x color-teal"></i>&nbsp;TOP COMENTARIOS </div>  
+
+ <% if user_signed_in? %>
+
+            <table class="table table-hover table-striped">
+              
+              <tbody>
+               <% @comentarios.each do |co| %>
+                  <tr style="margin-top: 3px;">
+                    
+                    <td><%= co.id  %> </td>
+
+                    <td>
+                      <%= co.name %>
+                    </td>
+                    
+                     <td>
+                      <%= co.comment %>
+                    </td>
+                    <% if (co.pelicula_id!=nil) %>
+                    <td class="label label-success" style=""><%= co.pelicula_id  %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            
+             
+        
+<% else %>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Solo puedes visualizar los comentarios los usuarios registrados.</p>
+
+
+<% end %>
+
+ </div> <!-- end box -->     
+</div> <!-- end col -->
+
+
+
+  <div class="col-lg-5">
+   
+   <img src="http://res.cloudinary.com/dlt8e13ma/image/upload/v1497695209/sample.jpg" style="width:200px;height:200px;"/>
+
+
+  </div> <!-- end col -->
+
+
+</div> <!-- end row -->
+
+
+
+<!-- PARCIAL FOOTER --> 
+<%= render "shared/footer" %>
+
+
+
+  
+
+
+
+</div> <!-- end container -->  
+
+</div> <!-- end estilosapp2 -->

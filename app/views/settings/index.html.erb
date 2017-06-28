@@ -1,0 +1,199 @@
+<style>
+.background {
+	background: #1A2980;   
+	background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);   
+	background: linear-gradient(to right, #26D0CE, #1A2980);  
+}
+input { text-indent: 20px; font-weight: bold;}
+.btn { text-decoration: none;  }
+.card:hover {  opacity: 0.9; } 
+.contawhite {background-color: white; }
+</style>
+ 
+
+<!-- PARCIAL HEADER --> 
+<%= render "shared/header" %>
+
+<div class="background"> 
+<div class="container contawhite">  
+<div class="row"> 
+  <div class="col-md-4" style="margin-top: 9%;"> 
+		<!-- CARD & PHOTO -->
+		<div class="card hovercard" style="border: 1px solid gray;">
+                <div class="cardheader"></div>
+                <div class="avatar"> 
+                    <img alt="" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="http://scripteden.com/"><%= current_user.email %></a>
+                    </div>
+                    <br></br>
+                    <div class="desc">Passionate designer</div>
+                    <div class="desc">Curious developer</div>
+                    <div class="desc">Tech geek</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                        <i class="fa fa-2x fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="https://plus.google.com/+ahmshahnuralam">
+                        <i class="fa fa-2x fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-2x fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-2x fa-behance"></i>
+                    </a>
+                    <br></br>
+
+                </div> <!-- bottom -->
+                <div class="info"> 
+              	   <%= link_to '<i class="fa fa-address-book white"></i>&nbsp;Select Movies'.html_safe, select_movies_path(@setting.id), class:"btn btn-primary size13 white", style:"margin-top: 15px; margin-bottom: 5px;" %>   
+                </div>	
+        </div> <!-- card hovercard -->
+</div> <!-- col-md-3 --> 
+
+<!-- SETTINGS TABLA --> 
+<div class="col-md-8" style="margin-top: 9%;">
+</br> 
+<blockquote class="block-tipo"><h2>Settings</h2></blockquote>	 
+<!-- SI ES DIFERENTE A NULL VISUALIZAR DATOS -->
+<%if !@setting.nil?%>  
+	<form class="form-horizontal">
+	  <div class="form-group has-success">
+		    <label class="control-label col-sm-2">Country</label>
+		    <div class="col-sm-9">
+		      <div class="input-group">
+		        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+		        <p class="form-control fwhite"><%= @setting.country %> </p>
+		      </div>
+		    </div>
+	  </div> <!-- form-group -->
+
+	  <div class="form-group has-success">
+		    <label class="control-label col-sm-2">Language</label>
+		    <div class="col-sm-9">
+		      <div class="input-group">
+		        <span class="input-group-addon"><i class="fa fa-language"></i></span>
+		        <p class="form-control fwhite"><%= @setting.language %> </p>
+		      </div>
+		    </div>
+	  </div> <!-- form-group language -->
+	  <!-- BOTONES EDITAR, ELIMINAR -->
+       <%= link_to ' Editar', edit_setting_path(@setting.id), :title => "Editar", class: 'btn btn-md btn-primary fa fa-1x fa-edit nodecor pull-right', style:"color: white;" %>
+      
+      <%= link_to ' Eliminar', { action: :destroy, id: @setting.id }, method: :delete, :title => "Eliminar",:class => 'btn btn-md btn-danger fa fa-1x fa-close nodecor pull-right', style:"color: white;" %>
+       <br></br> 
+	</form>
+<% else %>
+	<%= link_to 'Añadir', new_setting_path, title:"Añadir setting !!", class:"btn btn-md btn-primary  nodecor pull-right", style:"color:white;" %> 
+<% end %>
+
+	
+<%if flash.present?%>
+	<div class="row">
+	    <div class="col-sm-12 col-md-6 col-md-offset-3" style="padding:25px 0">
+	        <%= render partial: "shared/flash_messages", flash: flash %>
+	    </div>
+	</div>
+<%end%>
+
+ 	 
+		 
+		
+		</div> <!-- col-md-3 -->
+		</div> <!-- end row -->
+
+		<!-- TABLA DE USERS -->
+		<div class="row">
+			<div class="box2" style="margin-top: 20px; margin-left:20px; margin-right:20px;">
+			<blockquote class="block-tipo"><h2>User Account</h2></blockquote>	
+		    <table class="table table-hover table-striped" border="0">
+		              <tbody>
+		              <th class="danger">Id</th>			
+		              <th class="danger">Email</th>		
+		              <th class="danger">Current Sign In At</th>		
+		              <th class="danger">Sign In Count</th>		
+		              <th class="danger">Created At</th>		
+		              </tbody> 
+		                  <tr> 
+		                    <td><%= current_user.id  %> </td>
+		                    <td>
+		                      <%= current_user.email %>
+		                    </td>
+		                    
+		                     <td>
+		                      <%= current_user.current_sign_in_at  %>
+		                    </td>
+		                    <td>
+		                      <%= current_user.sign_in_count %>
+		                    </td>
+		                        <td>
+		                      <%= current_user.created_at %>
+		                    </td>
+		                  </tr> 
+		    </table>
+		</div> <!-- end box -->   
+		 
+	</div>	 <!-- end row -->
+
+
+<div class="row">
+<div class="box2" style="margin-top: 20px; margin-left:20px; margin-right:20px;">
+<blockquote class="block-tipo2"><h2>Payments</h2></blockquote>	
+
+<%if !@payment.nil?%>  
+<%@payment.each do |payment|%>
+ <table class="table table-hover table-striped" border="0">
+		              <tbody>
+		              <th class="success">Id</th>			
+		              <th class="success">Subscription</th>		
+		              <th class="success">Channel</th>		
+		              <th class="success">Active</th>		
+		              <th class="success">Plan</th>		
+		              <th class="success">Amount</th>		
+		              </tbody> 
+		                  <tr> 
+		                    <td><%= payment.id  %> </td>
+		                    <td>
+		                      <%= payment.subscription %>
+		                    </td> 
+		                     <td>
+		                      <%= payment.channel  %>
+		                    </td>
+		                    <td>
+		                      <%= payment.active %>
+		                    </td>
+		                    <td>
+		                      <%= payment.plan %>
+		                    </td>
+		                    <td>
+		                      <%= payment.amount %>
+		                    </td>
+		                  </tr> 
+		    </table>
+		    <% end %>
+<%else%>
+  <%= link_to 'Payment', new_charge_path, class:"btn btn-sm btn-success pull-center", style:"margin-right: 15px; margin-top: 10px; color:white; " %>
+
+<%end%>
+
+</div> <!-- end row -->
+
+
+<div class="estilosapp2">
+<!-- PARCIAL HEADER --> 
+<%= render "shared/footer" %>
+</div><!-- end estilosapp2 -->
+
+
+</div> <!-- end container -->
+ 
+</div> <!-- end  -->
+
+
+ 

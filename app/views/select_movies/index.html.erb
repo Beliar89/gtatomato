@@ -1,0 +1,40 @@
+
+
+<!-- PARCIAL HEADER --> 
+<%= render "shared/header" %>
+
+<div class="container">
+<div class="estilosapp2">
+ 
+<!-- PARCIAL BOX SEARCHS --> 
+<%= render "shared/boxsearchs" %>   
+
+<div class="row">
+   <% @peliculas.each do |peli|%>
+   <div class="col-lg-3 col-md-4 col-sm-6">
+       <div class="latest-movie">
+           <a href="#"><img src="<%= peli.url %>" style="width:225px; height: 245px;"></a></br>
+           <p><b>Id:</b> <%= peli.id %></p>
+           <p><b>Nombre:</b> <%= peli.name %></p>
+           <p><b>Director:</b> <%= peli.director %></p>
+           <p><b>Año:</b> <%= peli.year %></p>
+           <p><b>Genero:</b> <%= peli.genre %></p>
+           <p><b>Precio:</b> <%= peli.precio %></p>
+           <%= link_to select_plan_path(pelicula: peli.id), class: "btn btn-primary white" do %>
+             <i class="fa fa-search"></i> 
+             <%= t('Comprar') %>
+           <% end %>
+           
+       </div> <!-- end latest-movie -->
+   </div> <!-- end col -->
+   <%end%>
+</div> <!-- end row-->
+<%=debug params %>
+
+
+</div> <!-- end container -->
+<!-- PARCIAL FOOTER --> 
+<%= render "shared/footer" %>
+
+ 
+  
